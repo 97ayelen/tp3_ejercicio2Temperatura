@@ -104,6 +104,11 @@ public class Temperatura extends javax.swing.JFrame {
         buttonGroup1.add(btnInFarenheit);
         btnInFarenheit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnInFarenheit.setText("Farenheit");
+        btnInFarenheit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInFarenheitActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(btnInKelvin);
         btnInKelvin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -146,13 +151,11 @@ public class Temperatura extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addGap(137, 137, 137)
-                            .addComponent(jLabelSeleccioneSalida))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addGap(129, 129, 129)
-                            .addComponent(jLabelSeleccioneEntrada)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelSeleccioneSalida, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelSeleccioneEntrada, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(btnConvertir, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -244,16 +247,26 @@ public class Temperatura extends javax.swing.JFrame {
     }//GEN-LAST:event_textoTempareaturaActionPerformed
 
     private void btnInCelsiusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInCelsiusActionPerformed
-        // TODO add your handling code here:
+        btnOutCelsius.setEnabled(false);
+        btnOutFarenheit.setEnabled(true);
+        btnOutKelvin.setEnabled(true);
     }//GEN-LAST:event_btnInCelsiusActionPerformed
 
     private void btnInKelvinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInKelvinActionPerformed
-        // TODO add your handling code here:
+        btnOutKelvin.setEnabled(false);
+        btnOutFarenheit.setEnabled(true);
+        btnOutCelsius.setEnabled(true);
     }//GEN-LAST:event_btnInKelvinActionPerformed
 
     private void btnOutCelsiusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutCelsiusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOutCelsiusActionPerformed
+
+    private void btnInFarenheitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInFarenheitActionPerformed
+        btnOutFarenheit.setEnabled(false);
+        btnOutKelvin.setEnabled(true);
+        btnOutCelsius.setEnabled(true);
+    }//GEN-LAST:event_btnInFarenheitActionPerformed
 
     /**
      * @param args the command line arguments
