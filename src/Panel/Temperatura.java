@@ -5,6 +5,8 @@
  */
 package Panel;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -91,6 +93,11 @@ public class Temperatura extends javax.swing.JFrame {
         btnConvertir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icono/Image20250828205419.png"))); // NOI18N
         btnConvertir.setText("Convertir");
         btnConvertir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnConvertir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConvertirActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(btnInCelsius);
         btnInCelsius.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -267,6 +274,31 @@ public class Temperatura extends javax.swing.JFrame {
         btnOutKelvin.setEnabled(true);
         btnOutCelsius.setEnabled(true);
     }//GEN-LAST:event_btnInFarenheitActionPerformed
+
+    private void btnConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertirActionPerformed
+        // TODO add your handling code here:
+        try {
+              String jtext = textoTempareatura.getText();
+double grados = Double.parseDouble(jtext);
+        if (btnInCelsius.isSelected()&& btnOutFarenheit.isSelected()) {
+            JOptionPane.showMessageDialog(this, (grados + 9 / 5) + 32 + " ° Fahrenheit");
+        } else if(btnInCelsius.isSelected()&& btnOutKelvin.isSelected()){
+            JOptionPane.showMessageDialog(this, grados + 273.15 + " ° Kelvin");
+        } else if(btnInFarenheit.isSelected()&& btnOutCelsius.isSelected()){
+            JOptionPane.showMessageDialog(this,(grados - 32) *5 /9 +  " ° Celsius");
+        } else if(btnInFarenheit.isSelected()&& btnOutKelvin.isSelected()){
+            JOptionPane.showMessageDialog(this,(grados - 32) *5 /9 + 273.15 + " ° Kelvin");
+        }else if(btnInKelvin.isSelected()&& btnOutCelsius.isSelected()){
+            JOptionPane.showMessageDialog(this,grados - 273.15 +  " ° Celsius");
+        } else if(btnInKelvin.isSelected()&& btnOutFarenheit.isSelected()){
+            JOptionPane.showMessageDialog(this,(grados -273.15)*9/5 + 32 + " ° Fahrenheit");
+        }else{
+             JOptionPane.showMessageDialog(this,  "Error, ingrese una de las opciones. ");
+        }  
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,  "Error de entrada. Debe ingresar un numero. ");
+        }
+    }//GEN-LAST:event_btnConvertirActionPerformed
 
     /**
      * @param args the command line arguments
